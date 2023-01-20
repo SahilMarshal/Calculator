@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="">
+	<title>Calcy</title>
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+			background-color: #e3f9ff ;	
+		}
+		.numpad{
+			background-color: #0a192f;
+			width: 300px;
+			height: 510px;
+			margin: auto;
+			text-align: center;
+			align-content: center;
+			border: 2px solid black;
+			border-radius: 20px;
+		}
+		h1{
+			margin-top: 8px;
+			text-align: center;
+			font-size: 50px;
+			letter-spacing: 2px;
+		}
+		.numpad input{
+			margin: 20px 0px;
+			width: 260px;
+			height: 70px;
+			border-radius: 10px;
+			font-size: 30px;
+		}
+		.calcy{
+			width: 300px;
+			height: 350px;
+			margin: auto;
+			padding: 10px;
+		}
+		.calcy thead tr td button{
+			height: 70px;
+			width: 60px;
+			border-radius: 10px;
+			font-size: 25px;
+		}
+		.calcy thead tr td button:hover{
+			background-color: #c2d4b1;
+			cursor: pointer;
+		}
+		.calcy thead tr td .C{
+			width: 130px;
+			background-color: #e35632;
+		}
+		.calcy thead tr td .op{
+			background-color: darkgray;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculator</h1>
+	<div class="numpad">
+		<input type="text" name="screen" id="screen">
+		<table class="calcy">
+			<thead>
+				<tr >
+					<td rowspan="1" colspan="2"><button class="C">C</button></td>
+					<td><button class="op">(</button></td>
+					<td><button class="op">)</button></td>
+				</tr>
+				<tr>
+					<td> <button>7</button> </td>
+					<td> <button>8</button> </td>
+					<td> <button>9</button> </td>
+					<td> <button class="op">/</button> </td>
+				</tr>
+				<tr>
+					<td> <button>4</button> </td>
+					<td> <button>5</button> </td>
+					<td> <button>6</button> </td>
+					<td> <button class="op">*</button> </td>
+				</tr>
+				<tr>
+					<td> <button>1</button> </td>
+					<td> <button>2</button> </td>
+					<td> <button>3</button> </td>
+					<td> <button class="op">-</button> </td>
+				</tr>
+				<tr>
+					<td> <button class="op">.</button> </td>
+					<td> <button>0</button> </td>			
+					<td> <button class="op">=</button> </td>
+					<td> <button class="op">+</button> </td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		let screen=document.getElementById('screen');
+		buttons= document.querySelectorAll('button');
+		let screenValue='';
+		for(item of buttons){
+			item.addEventListener('click', (e)=>{
+				buttonText=e.target.innerText;
+				console.log('Button text is', buttonText)
+				if(buttonText=='='){
+					screen.value = eval(screenValue);
+				}
+				else if(buttonText=='C'){
+					screenValue = " ";
+					screen.value=screenValue;
+				}
+				else{
+					screenValue+=buttonText;
+					screen.value=screenValue;
+				}
+			})
+		}	
+	</script>
+
+</body>
+</html>
